@@ -23,3 +23,15 @@ Here, we introduce a the framwork with multiple parameters to account for: **Het
 - Only the histogram of kill counts is observed, not the identity of individual cells
 - The individual cell rates $ \lambda $ follow a population distribution as above
 - The Poisson likelihood is marginalised over $ \lambda $
+
+
+
+---
+Next step:
+- Check the code, model 1 and model 2 should be the same
+- play with different cell number in synthetic data
+- play with different distributions, different prior distributions
+- The posterior distribution check
+- add p_zero
+- Get a detailed model for the contact and kill history
+---
