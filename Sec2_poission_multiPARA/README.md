@@ -8,30 +8,33 @@ Here, we introduce a the framwork with multiple parameters to account for: **Het
 
 
 
-## Scenario-1. 2 parameters: $\mu_{\lambda}$ & $\sigma_{\lambda}$ ---  Mean and STD of $\lambda$ in the Poisson killing model
+## Two parameters: $\mu_{\lambda}$ & $\sigma_{\lambda}$ — Mean and STD of $\lambda$ in the Poisson killing model
 
-**Mathematical model 1**: Per-cell Poisson Model (Individual Kill Counts)
+**Mathematical model**: Per-cell Poisson Model (Individual Kill Counts)
 
-- Each cell $i \in \{1, \dots, M\}$  has a latent killing rate $\lambda_i$.
-- This rate is drawn from a population distribution parameterised by $\mu_\lambda $  and $ \sigma_\lambda $
-- The cell’s observed kill count $ k_i $ is Poisson-distributed with rate $ \lambda_i $
+- Each cell $i \in \{1, \dots, M\}$ has a latent killing rate $\lambda_i$.
+- This rate is drawn from a Gamma distribution parameterized by $\mu_{\lambda}$ and $\sigma_{\lambda}$.
+- The cell’s observed kill count $k_i$ is Poisson-distributed with rate $\lambda_i$.
 
-<br>
+Therefore, there are two layers in this model:
 
-**Mathematical model 2**: Marginalised Multinomial Model (Histogram Data)
+1. $\lambda_i$ for each cell follows the Gamma distribution:
 
-- Only the histogram of kill counts is observed, not the identity of individual cells
-- The individual cell rates $ \lambda $ follow a population distribution as above
-- The Poisson likelihood is marginalised over $ \lambda $
+   Mean and standard deviation are given by:
+
+   $$
+   \mu_{\lambda} = \frac{\alpha}{\beta}, \sigma_{\lambda} = \frac{\sqrt{\alpha}}{\beta}
+   $$
+
+   $$
+   \lambda_i \sim \mathrm{Gamma}(\alpha, \beta)
+   $$
+
+2. $N_j$ (the number of target cells killed per killer cell) follows the Poisson distribution with rate $\lambda_i$:
+
+   $$
+   N_j \sim \mathrm{Poisson}(\lambda_i)
+   $$
 
 
 
----
-Next step:
-- Check the code, model 1 and model 2 should be the same
-- play with different cell number in synthetic data
-- play with different distributions, different prior distributions
-- The posterior distribution check
-- add p_zero
-- Get a detailed model for the contact and kill history
----
