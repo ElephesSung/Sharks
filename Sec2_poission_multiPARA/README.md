@@ -22,19 +22,19 @@ Therefore, there are two layers in this model:
 
    Mean and standard deviation are given by:
 
-   $
+   $$
    \mu_{\lambda} = \frac{\alpha}{\beta}, \sigma_{\lambda} = \frac{\sqrt{\alpha}}{\beta}
-   $
+   $$
 
-   $
+   $$
    \lambda_i \sim \mathrm{Gamma}(\alpha, \beta)
-   $
+   $$
 
 2. $N_j$ (the number of target cells killed per killer cell) follows the Poisson distribution with rate $\lambda_i$:
 
-   $
+   $$
    N_j \sim \mathrm{Poisson}(\lambda_i)
-   $
+   $$
 
 
 
