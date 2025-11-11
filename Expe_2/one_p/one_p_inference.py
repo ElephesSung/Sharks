@@ -11,6 +11,13 @@ from matplotlib.cm import get_cmap
 from matplotlib.ticker import MultipleLocator, MaxNLocator
 import matplotlib.gridspec as gridspec
 import seaborn as sns
+from tqdm.auto import tqdm
+
+
+from joblib import Parallel, delayed
+from matplotlib.ticker import MaxNLocator
+from matplotlib.patches import Patch
+from scipy.stats import gaussian_kde
 
 plt.rcParams.update({
     "mathtext.fontset": "stix",
@@ -190,6 +197,8 @@ def plot_lam_posteriors(
         print(f"Saved PDF: {pdf_path}")
     plt.show()
 
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         csv_path_to_load = sys.argv[1]
@@ -231,3 +240,11 @@ if __name__ == "__main__":
         export_pdf=True, pdf_path="./rate_posteriors_facet.pdf",
         legend_show_mean=True
     )
+    
+    # plot_posterior_prediction_violin(
+    #     idatas=idatas,
+    #     experiments=experiments,
+    #     colours=colors,
+    #     n_reps=300,   # increase for smoother violins
+    # )
+
